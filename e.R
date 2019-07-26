@@ -57,7 +57,7 @@ ggplot(cleaned_timer, aes(x=as.factor(V3), y=V1)) +
 
 ggplot(data = timing[which(timing$V2>1),], aes(x = V3, y = V1, color = V2, weight = V1 * (V2 / 100))) + 
 #  geom_point() + 
-  geom_jitter(width = 0.1) +
+  geom_jitter(width = 0.1, size = 1) +
   geom_smooth(method="lm", se = FALSE) + 
   ylim(0, 120000) +
   xlab("Taktrate des Mikrocontrollers [Mhz]") + 
@@ -68,8 +68,8 @@ ggplot(data = timing[which(timing$V2>1),], aes(x = V3, y = V1, color = V2, weigh
 
 
 ggplot(data = inline[which(inline$V2>1),], aes(x = V3, y = V1, color = V2, weight = V1 * (V2 / 100))) + 
-#  geom_point() + 
-  geom_jitter(width = 0.1) +
+#  geom_point() +  
+  geom_jitter(width = 0.1, size = 1) +
   geom_smooth(method="lm", se = FALSE) + 
   ylim(0, 120000) +
   xlab("Taktrate des Mikrocontrollers [Mhz]") + 
@@ -80,7 +80,7 @@ ggplot(data = inline[which(inline$V2>1),], aes(x = V3, y = V1, color = V2, weigh
 
 ggplot(data = timer[which(timer$V2>1),], aes(x = V3, y = V1, color = V2, weight = V1 * (V2 / 100))) + 
 #  geom_point() +
-  geom_jitter(width = 0.1) + 
+  geom_jitter(width = 0.1, size = 1) + 
   geom_smooth(method="lm", se = FALSE) + 
   ylim(0, 120000) +
   xlab("Taktrate des Mikrocontrollers [Mhz]") + 
@@ -171,3 +171,12 @@ ggplot(max_data44, aes(x = as.numeric(mhz), y = as.numeric(as.character(data)), 
   geom_smooth(se = FALSE) + 
   xlab("Taktfrequenz [Mhz]") + 
   ylab("Taktzyklen pro Übertragenem Bit")
+
+
+bootsize <- read.table("E:/Dokumente/seafile/Seafile/Seafile/Main/Dokumente/FH/Bachelor/values/Bootloader/sizes.txt",
+                   sep = "" , header = F , na.strings ="", stringsAsFactors= F)
+ggplot(bootsize, aes(x = V3, y = V1, fill = V2)) +
+  geom_bar(stat='identity') +
+  ylab("Flashgröße [Byte]") +
+  labs(fill = "Bereich") +
+  xlab("Methode") 
