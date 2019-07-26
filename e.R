@@ -176,6 +176,7 @@ ggplot(max_data44, aes(x = as.numeric(mhz), y = as.numeric(as.character(data)), 
 bootsize <- read.table("E:/Dokumente/seafile/Seafile/Seafile/Main/Dokumente/FH/Bachelor/values/Bootloader/sizes.txt",
                    sep = "" , header = F , na.strings ="", stringsAsFactors= F)
 ggplot(bootsize, aes(x = V3, y = V1, fill = V2)) +
+  scale_y_continuous(breaks = seq(0, 600, 50)) +
   geom_bar(stat='identity') +
   ylab("Flashgröße [Byte]") +
   labs(fill = "Bereich") +
